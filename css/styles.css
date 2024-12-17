@@ -1,0 +1,138 @@
+/* Resetting some default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url(img/bg.jpg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    
+}
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    z-index: 1;
+}
+
+.comment-box {
+    background: rgba(255, 255, 255, 0.9);  /* Transparent white background */
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: fadeInUp 1s ease-out forwards;
+    width: 100%;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+    border: 4px solid #3498db;
+    transition: all 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
+}
+
+.comment-content h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+    text-align: left;
+    transition: color 0.3s ease;
+}
+
+.comment-content p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    text-align: left;
+    max-width: 90%;
+}
+
+.comment-content p:before {
+    content: "“";
+    font-size: 30px;
+    color: #3498db;
+    margin-right: 10px;
+}
+
+.comment-content p:after {
+    content: "”";
+    font-size: 30px;
+    color: #3498db;
+    margin-left: 10px;
+}
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .comment-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .comment-content h3 {
+        text-align: center;
+    }
+
+    .comment-content p {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .comment-box {
+        padding: 15px;
+    }
+}
